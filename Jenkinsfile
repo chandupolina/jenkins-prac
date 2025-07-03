@@ -1,15 +1,14 @@
 pipeline {
     agent any 
+    environment {
+        MOVIE="bahubali"
+        SCM="github"
+    }
     stages {
         stage ('build') {
             steps {
-                echo "build stage message"
-            }
-        }
-        stage ('build2') {
-            steps {
-                sleep 10
-                echo "run stage message"
+                echo "the movie ${MOVIE} is very nice film"
+                echo "the scm tool in devops is ${SCM}" 
             }
         }
     }
