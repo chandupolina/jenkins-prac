@@ -6,8 +6,8 @@ pipeline {
                 echo "implementing timeout option"
                 timeout (time:5 , unit :'SECONDS')
                 {
-                    echo " sleeping for 60 seconds"
-                    sleep 60
+                    echo " sleeping for 3 seconds"
+                    sleep 3
                 }
             }
         }
