@@ -10,7 +10,7 @@ pipeline {
         stage ('script stage') {
             steps {
                 script {
-                    def course = "maven"
+                    def course = "k8s"
                     if (course=="maven")
                     println("thanks for enrolling in ${course}")
                     else 
