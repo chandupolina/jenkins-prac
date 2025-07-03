@@ -10,6 +10,7 @@ pipeline {
             steps {
                 echo " Hello welcome to maven section"
                 sh "mvn --version"
+                sh "java --version"
 
             }
         }
@@ -19,6 +20,7 @@ pipeline {
             }
             steps {
                 echo "hello welcome to cartmaven"
+                sh "java --version"
                 sh "mvn --version"
             }
             
