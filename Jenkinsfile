@@ -1,26 +1,14 @@
 pipeline {
     agent any
     stages {
-        stage ('build') {
-            steps {
-                echo "Hello world"
-                sh "hostname -i"
-            }
-        }
-        stage ('script stage') {
-            steps {
-                script {
-                    def course = "maven"
-                    if (course=="maven") {
-                        println("thanks for enrolling in ${course}")
-                    }
-                    else {
-                        println("try to learn ${course}")
-                        sleep 10
-                    }
-                    
-                    echo "script block has been executed"
+        stage ('Build') {
+            steps  {
+                retry(3) {
+                    echo "using retry block under steps block"
+                    error "using error to make the build failure"
+
                 }
+                echo  " i will come after 3 retrys "
             }
         }
     }
