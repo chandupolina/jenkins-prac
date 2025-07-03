@@ -2,29 +2,27 @@ pipeline {
     agent {
         label 'java-slave'
     }
-    tools {
-        maven 'maven-3.9.9'
-    }
     stages {
-        stage ("Maven") {
+        stage ('Build') {
             steps {
-                echo " Hello welcome to maven section"
-                sh "mvn --version"
-                sh "java --version"
-
+                echo "building pipeline"
             }
         }
-        stage ("cartmaven") {
-            tools {
-                jdk 'jdk-21'
-                maven 'maven-3.6.3'
-            }
+        stage ('scan') {
             steps {
-                echo "hello welcome to cartmaven"
-                sh "java --version"
-                sh "mvn --version"
+                echo "scan the pipeline"
             }
-            
+        }
+        stage ('dockerbuild') {
+            steps {
+                echo " docker pipeline"
+            }
+        }
+        stage ('devdeploy') {
+            steps {
+                echo "deploying to dev"
+            }
         }
     }
+
 }
