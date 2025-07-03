@@ -1,15 +1,27 @@
 pipeline {
-    agent any
+    agent {
+        label 'java-slave'
+    }
+    tools {
+        maven 'maven-3.6.3'
+    }
     stages {
-        stage ('Build') {
+        stage ("Maven") {
             steps {
-                echo "implementing timeout option"
-                timeout (time:5 , unit :'SECONDS')
-                {
-                    echo " sleeping for 3 seconds"
-                    sleep 3
-                }
+                echo " Hello welcome to maven section"
+                sh mvn --version
+
             }
+        }
+        stage ("cartmaven") {
+            tools {
+                jdk 'jdk-17'
+            }
+            steps {
+                echo "hello welcome to cartmaven"
+                sh  mvn --version
+            }
+            
         }
     }
 }
