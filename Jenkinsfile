@@ -10,12 +10,15 @@ pipeline {
         stage ('script stage') {
             steps {
                 script {
-                    def course = "k8s"
-                    if (course=="maven")
-                    println("thanks for enrolling in ${course}")
-                    else 
-                    println("try to learn ${course}")
-                    sleep 10
+                    def course = "maven"
+                    if (course=="maven") {
+                        println("thanks for enrolling in ${course}")
+                    }
+                    else {
+                        println("try to learn ${course}")
+                        sleep 10
+                    }
+                    
                     echo "script block has been executed"
                 }
             }
