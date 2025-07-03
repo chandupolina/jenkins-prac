@@ -2,13 +2,13 @@ pipeline {
     agent any
     stages {
         stage ('Build') {
-            steps  {
-                retry(3) {
-                    echo "using retry block under steps block"
-                    error "using error to make the build failure"
-
+            steps {
+                echo "implementing timeout option"
+                timeout (time:5 , unit :'SECONDS')
+                {
+                    echo " sleeping for 60 seconds"
+                    sleep 60
                 }
-                echo  " i will come after 3 retrys "
             }
         }
     }
