@@ -17,6 +17,7 @@ pipeline {
         stage ("cartmaven") {
             tools {
                 jdk 'jdk-21'
+                maven 'maven-3.6.3'
             }
             steps {
                 echo "hello welcome to cartmaven"
