@@ -1,4 +1,3 @@
-# stages .groovy
 pipeline {
     agent any
     stages {
