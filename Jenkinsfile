@@ -7,11 +7,9 @@ pipeline {
             }
         }
         stage ('build2') {
-            stage ('run') {
-                steps {
-                    sleep 10
-                    echo "run stage message"
-                }
+            steps {
+                sleep 10
+                echo "run stage message"
             }
         }
     }
