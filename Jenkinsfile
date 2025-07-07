@@ -16,7 +16,7 @@ pipeline {
                 echo "------------------printing images after changing the tag-------------------"
                 sh "docker images"
                 echo"---------------------Dcoker login----------------------------------"
-                sh "docker login -u ${DOCKER_CREDS_USR}" -p ${DOCKER_CREDS_PSW}
+                sh "docker login -u ${DOCKER_CREDS_USR} -p ${DOCKER_CREDS_PSW}"
                 echo "----------------------pushing image to REPO---------------------"
                 sh "docker push ${DOCKER_REPO}:b7"
             }
