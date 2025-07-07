@@ -3,28 +3,18 @@ pipeline {
         label 'java-slave'
     }
     environment {
-        DOCKER_CREDS=credentials('docker_creds')
-        DOCKER_REPO= 'cpolina/nginxdevops'
+        GITHUB_CREDS = credentials('github_creds')
+        SONAR_CREDS = credentials('sonar-scan-token')
     }
     stages {
-        stage ('DockerBP') {
+        stage ('build') {
             steps {
-                sh "docker pull nginx"
-                echo "----------------------printing images before changing the tag ---------------"
-                sh "docker images"
-                sh "docker tag nginx cpolina/nginxdevops:b7"
-                echo "------------------printing images after changing the tag-------------------"
-                sh "docker images"
-                echo"---------------------Dcoker login----------------------------------"
-                sh "docker login -u ${DOCKER_CREDS_USR} -p ${DOCKER_CREDS_PSW}"
-                echo "----------------------pushing image to REPO---------------------"
-                sh "docker push ${DOCKER_REPO}:b7"
-            }
-        }
-        stage('Check Docker Access') {
-            steps {
-                sh 'id && docker ps'
+                echo "my github credentials are ${GITHUB_CREDS}"
+                echo "my github username is ${GITHUB_CREDS_USR}"
+                echo "my github password is ${GITHUB_CREDS_PSW}"
+                echo "my soanr credential are ${SONAR_CREDS}"
             }
         }
     }
+
 }
