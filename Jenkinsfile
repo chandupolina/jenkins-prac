@@ -1,18 +1,18 @@
 pipeline {
-    agent any
+    agent {
+        label 'java-slave'
+    }
     environment {
-        BRANCH_NAME = 'develop'
+        DEPLOY_TO ='production'
     }
     stages {
-        stage('Deploy') {
+        stage ('deployment') {
             when {
-                not {
-                    branch 'develop'
-                }
+                expression { BRANCH_NAME ==~ (production | staging }
             }
             steps {
-                echo "This stage runs if NOT on 'develop' branch. Current branch: ${BRANCH_NAME}"
+                echo  " Deploying to production"
             }
-        }
+        }        
     }
 }
