@@ -1,25 +1,25 @@
 pipeline {
-    agent any
+    agent any 
     environment {
-        name = 'chandu'
-        course = 'devops'
+        course = "Docker and K8S"
+        name = "Siva"
     }
     stages {
-        stage ('build') {
+        stage ("FirstStage") {
             environment {
-                cloud = 'gcp'
+                cloud = "GCP"
             }
             steps {
-                echo "hello this is ${name} from ${course} course"
-                echo "i chose ${cloud} cloud"
+                echo "Welcome ${name}"
+                echo "You Enrolled for ${course}"
+                echo "You are certified in ${cloud} Cloud"
             }
         }
-        stage ('second stage') {
+        stage ('SecondStage') {
             steps {
-                echo "hello ${name}"
-                echo "i am doing ${course} course"
-                echo "i chose ${cloud} cloud"
-
+                echo "Welcome ${name}"
+                echo "You Enrolled for ${course}"
+                echo "You are certified in ${cloud} Cloud"
             }
         }
     }
