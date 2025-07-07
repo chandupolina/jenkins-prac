@@ -1,16 +1,16 @@
 pipeline {
-    agent any
+    agent any 
     stages {
         stage ('Build') {
             options {
-                retry(3) 
+                retry(3)
             }
             steps {
-                echo "Before setting currrent build to failure"
+                echo "Before Setting Current Build to Failure"
                 script {
-                    currrentBuild.result ='FAILURE'
+                    currentBuild.result = 'FAILURE'
                 }
-                echo " After setting current build as failure"
+                echo "After Setting Current Build to Failure"
             }
         }
     }
