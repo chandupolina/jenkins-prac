@@ -1,3 +1,5 @@
+// environemnt values in stage will take presendence compared to pipeline
+
 pipeline {
     agent any 
     environment {
@@ -7,19 +9,14 @@ pipeline {
     stages {
         stage ("FirstStage") {
             environment {
+                name = "Krish"
                 cloud = "GCP"
             }
             steps {
                 echo "Welcome ${name}"
                 echo "You Enrolled for ${course}"
                 echo "You are certified in ${cloud} Cloud"
-            }
-        }
-        stage ('SecondStage') {
-            steps {
-                echo "Welcome ${name}"
-                echo "You Enrolled for ${course}"
-                echo "You are certified in ${cloud} Cloud"
+                sh 'printenv'
             }
         }
     }
