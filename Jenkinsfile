@@ -1,18 +1,20 @@
 pipeline {
     agent any
-    options {
-        timestamps()
+    environment {
+        name='chandu'
+        course='devops'
     }
     stages {
         stage ('build') {
+            environment {
+                cloud='GCP'
+            }
             steps {
-                echo "Hello world"
+                echo "name is ${name}"
+                echo "and my course is ${course} using ${cloud} cloud"
+
             }
         }
-        stage ('test') {
-            steps {
-                echo "hello test is running" 
-            }
-        }
+
     }
 }
