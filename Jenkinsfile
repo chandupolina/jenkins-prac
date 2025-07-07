@@ -6,7 +6,7 @@ pipeline {
         DOCKER_CREDS=credentials('docker_creds')
         DOCKER_REPO= 'cpolina/nginxdevops'
     }
-    stages {
+    stages { 
         stage ('DockerBP') {
             steps {
                 sh "docker pull nginx"
