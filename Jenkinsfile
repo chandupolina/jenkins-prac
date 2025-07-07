@@ -1,20 +1,16 @@
 pipeline {
-    agent {
-        label 'java-slave'
-    }
+    agent any 
     environment {
-        GITHUB_CREDS = credentials('github_creds')
-        SONAR_CREDS = credentials('sonar-scan-token')
+        DEPLOY_TO ='production'
     }
     stages {
-        stage ('build') {
+        stage ('deploy') {
+            when {
+                environment name:'DEPLOY_TO', value:'production'
+            }
             steps {
-                echo "my github credentials are ${GITHUB_CREDS}"
-                echo "my github username is ${GITHUB_CREDS_USR}"
-                echo "my github password is ${GITHUB_CREDS_PSW}"
-                echo "my soanr credential are ${SONAR_CREDS}"
+                echo "Deploy to production env"
             }
         }
     }
-
 }
