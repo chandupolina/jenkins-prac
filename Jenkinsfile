@@ -1,21 +1,18 @@
-// environemnt values in stage will take presendence compared to pipeline
-
 pipeline {
-    agent any 
+    agent any
     environment {
-        course = "Docker and K8S"
-        name = "Siva"
+        name='chandu'
+        course='devops'
     }
     stages {
-        stage ("FirstStage") {
+        stage ('BUild') {
             environment {
-                name = "Krish"
-                cloud = "GCP"
+                course = 'gcp'
+                name='pavan'
             }
             steps {
-                echo "Welcome ${name}"
-                echo "You Enrolled for ${course}"
-                echo "You are certified in ${cloud} Cloud"
+                echo "hello ${name}"
+                echo "i am doing ${course}"
                 sh 'printenv'
             }
         }
