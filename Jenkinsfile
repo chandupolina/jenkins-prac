@@ -1,14 +1,16 @@
 pipeline {
-    agent any 
-    environment {
-        MOVIE="bahubali"
-        SCM="github"
-    }
+    agent any
     stages {
-        stage ('build') {
+        stage ('Build') {
+            options {
+                retry(3) 
+            }
             steps {
-                echo "the movie ${MOVIE} is very nice film"
-                echo "the scm tool in devops is ${SCM}" 
+                echo "Before setting currrent build to failure"
+                script {
+                    currrentBuild.result ='FAILURE'
+                }
+                echo " After setting current build as failure"
             }
         }
     }
