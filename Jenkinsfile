@@ -1,16 +1,17 @@
 pipeline {
-    agent any 
+    agent any
     options {
-        retry(3)
+        timestamps()
     }
     stages {
-        stage ('Build') {
+        stage ('build') {
             steps {
-                echo  "Before setting currrent build to failure"
-                script {
-                    currentBuild.result = 'SUCCESS'
-                }
-                echo "After setting current build as failure"
+                echo "Hello world"
+            }
+        }
+        stage ('test') {
+            steps {
+                echo "hello test is running" 
             }
         }
     }
