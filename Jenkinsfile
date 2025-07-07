@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        label 'java-slave'
+    }
     environment {
         DOCKER_CREDS=credentials('docker_creds')
         DOCKER_REPO= 'cpolina/nginxdevops'
