@@ -1,15 +1,19 @@
 pipeline {
-    agent any 
+    agent {
+        label 'java-slave'
+    }
     environment {
-        DEPLOY_TO ='production'
+        DEPLOY_TO = 'production'
     }
     stages {
-        stage ('deploy') {
+        stage ('build') {
             when {
-                environment name:'DEPLOY_TO', value:'production'
+                not {
+                    equals expected:'prod' , actual : "${DEPLOY_TO}"
+                }
             }
             steps {
-                echo "Deploy to production env"
+                echo "Deploying to production"
             }
         }
     }
