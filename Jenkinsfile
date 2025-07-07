@@ -1,19 +1,24 @@
 pipeline {
-    agent any
+    agent {
+        label 'java-slave'
+    }
     environment {
-        name='chandu'
-        course='devops'
+        DOCKER_CREDS=credentials('docker_creds')
+        DOCKER_REPO='cpolina/apach'
     }
     stages {
-        stage ('BUild') {
-            environment {
-                course = 'gcp'
-                name='pavan'
-            }
+        stage ('DockerBP') {
             steps {
-                echo "hello ${name}"
-                echo "i am doing ${course}"
-                sh 'printenv'
+                sh "docker pull nginx"
+                echo "----------------------printing images before changing the tag ---------------"
+                sh "docker images"
+                sh "docker tag nginx cpolina/apach:b7"
+                echo "------------------printing images after changing the tag-------------------"
+                sh "docker images"
+                echo"---------------------Dcoker login----------------------------------"
+                sh "docker login -u ${DOCKER_CREDS_USR}" -p ${DOCKER-CREDS-PSW}
+                echo "----------------------pushing image to REPO---------------------"
+                sh "docker push ${DOCKER_REPO}:b7"
             }
         }
     }
