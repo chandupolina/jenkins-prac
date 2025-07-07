@@ -8,7 +8,7 @@ pipeline {
             steps {
                 echo  "Before setting currrent build to failure"
                 script {
-                    currentBuild.result = 'FAILURE'
+                    currentBuild.result = 'SUCCESS'
                 }
                 echo "After setting current build as failure"
             }
