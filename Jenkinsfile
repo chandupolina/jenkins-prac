@@ -1,20 +1,26 @@
 pipeline {
     agent any
     environment {
-        name='chandu'
-        course='devops'
+        name = 'chandu'
+        course = 'devops'
     }
     stages {
         stage ('build') {
             environment {
-                cloud='GCP'
+                cloud = 'gcp'
             }
             steps {
-                echo "name is ${name}"
-                echo "and my course is ${course} using ${cloud} cloud"
+                echo "hello this is ${name} from ${course} course"
+                echo "i chose ${cloud} cloud"
+            }
+        }
+        stage ('second stage') {
+            steps {
+                echo "hello ${name}"
+                echo "i am doing ${course} course"
+                echo "i chose ${cloud} cloud"
 
             }
         }
-
     }
 }
