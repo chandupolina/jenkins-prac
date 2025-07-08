@@ -11,9 +11,9 @@ pipeline {
         }
         stage ('ProdDeploy') {
             when {
-                allOff {
+                allOf {
                     //if there are 10 conditions all 10 conditions should be satisfied
-                    branch = 'production'
+                    branch 'production'
                     environment name : 'DEPLOY_TO', value : 'production'
                 }
             }
