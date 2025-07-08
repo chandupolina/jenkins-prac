@@ -1,24 +1,24 @@
 pipeline {
-    agent any
+    agent any 
     environment {
-        DEPLOY_TO = 'production'
+        DEPLOY_TO = 'xyz'
     }
     stages {
-        stage ('DeploytoDev') {
+        stage ('deploytodev') {
             steps {
-                echo " Deploying to Dev"
+                echo "deploying to dev "
             }
         }
-        stage ('ProdDeploy') {
+        stage ('deploytoprod') {
             when {
-                allOf {
-                    //if there are 10 conditions all 10 conditions should be satisfied
-                    branch 'producion'
-                    environment name : 'DEPLOY_TO', value : 'production'
+                anyOf {
+                    branch : 'production'
+                    // if any one condition met it will execute the stage 
+                    environment name :'DEPLOY_TO' , value : 'production'
                 }
-            }
-            steps {
-                echo "Deploying to production"
+                steps {
+                    echo " Deploy to prod env"
+                }
             }
         }
     }
