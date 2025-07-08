@@ -1,18 +1,29 @@
 pipeline {
-    agent any
-    environment {
-        scans = 'execute'
-    }
+    agent any 
     stages {
-        stage ('scans') {
-            when {
-                anyOf {
-                    branch 'main'
-                    environment name: 'scn', value: 'execute'
-                }
-            }
+        stage ('build') {
             steps {
-                echo "executing the scans stage"
+                echo "building the code"
+            }
+        }
+        stage ('parallel-stages') {
+            parallel {
+                stage ('A') {
+                    steps {
+                        echo " A stage is running"
+                        sh 'sleep 10'
+                    }
+                }
+                stage ('B') {
+                    steps {
+                        echo " B stage is running"
+                    }
+                }
+                stage ('C') {
+                    steps {
+                        echo " C stage is running"
+                    }
+                }
             }
         }
     }
