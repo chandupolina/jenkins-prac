@@ -12,13 +12,13 @@ pipeline {
         stage ('deploytoprod') {
             when {
                 anyOf {
-                    branch : 'production'
+                    branch 'production'
                     // if any one condition met it will execute the stage 
-                    environment name :'DEPLOY_TO' , value : 'production'
+                    environment name:'DEPLOY_TO' , value: 'production'
                 }
-                steps {
-                    echo " Deploy to prod env"
-                }
+            }
+            steps {
+                echo "Deploy to prod env"
             }
         }
     }
