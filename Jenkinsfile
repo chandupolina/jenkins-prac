@@ -1,22 +1,21 @@
-// based on the branch condition, i can create the pipeline
-// BRANCH_NAME variable is only available in Multi Branch pipeline/Git hub or pipleines 
-
 pipeline {
-    agent any 
+    agent any
     environment {
-        // our own custom env variables
         DEPLOY_TO = 'production'
     }
     stages {
-        stage ('DepoyToDev') {
+        stage ('DeploytoDev') {
             steps {
-                echo "Deploying to Dev Environment"
+                echo " Deploying to Dev"
             }
         }
         stage ('ProdDeploy') {
             when {
-                // brnach condition
-                expression { BRANCH_NAME ==~ /(production|staging)/ }
+                allOff {
+                    //if there are 10 conditions all 10 conditions should be satisfied
+                    branch = 'production'
+                    environment name : 'DEPLOY_TO', value : 'production'
+                }
             }
             steps {
                 echo "Deploying to production"
