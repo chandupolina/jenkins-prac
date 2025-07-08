@@ -6,7 +6,10 @@ pipeline {
     stages {
         stage ('scans') {
             when {
-                environment name: 'scan', value: 'execute'
+                anyOf {
+                    branch 'main'
+                    environment name: 'scn', value: 'execute'
+                }
             }
             steps {
                 echo "executing the scans stage"
