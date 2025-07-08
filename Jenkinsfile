@@ -1,20 +1,16 @@
 pipeline {
-    agent {
-        label 'java-slave'
-    }
+    agent any
     environment {
-        DEPLOY_TO ='production'
+        scans = 'execute'
     }
     stages {
-        stage ('deployment') {
+        stage ('scans') {
             when {
-                expression { 
-                    BRANCH_NAME ==~ (production | staging)
-                }
+                environment name: 'scans', value: 'execute'
             }
             steps {
-                echo  " Deploying to production"
+                echo "executing the scans stage"
             }
-        }        
+        }
     }
 }
