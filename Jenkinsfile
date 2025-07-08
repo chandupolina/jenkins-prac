@@ -13,7 +13,7 @@ pipeline {
             when {
                 allOf {
                     //if there are 10 conditions all 10 conditions should be satisfied
-                    branch 'production'
+                    branch 'producion'
                     environment name : 'DEPLOY_TO', value : 'production'
                 }
             }
