@@ -17,6 +17,7 @@ pipeline {
                 stage ('B') {
                     steps {
                         echo " B stage is running"
+                        echo " b stage print"
                     }
                 }
                 stage ('C') {
